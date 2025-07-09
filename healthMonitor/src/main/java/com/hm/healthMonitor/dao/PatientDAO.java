@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Repository
-public class PatientDAO {
+public class PatientDAO implements PatientDAOInterface{
 
     private final EntityManager entityManager;
 
@@ -20,6 +20,7 @@ public class PatientDAO {
     }
 
     @Transactional
+    @Override
     public void save(PatientEntity patientEntity) {
         entityManager.persist(patientEntity);
     }

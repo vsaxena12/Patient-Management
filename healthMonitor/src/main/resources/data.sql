@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS patient_entity
     address             VARCHAR(255)        NOT NULL,
     date_of_birth       DATE                NOT NULL,
     date_of_admit       DATE                NOT NULL,
-    date_of_discharge   DATE                NOT NULL
+    date_of_discharge   DATE
 );
 
 -- Insert well-known UUIDs for specific patient_entitys

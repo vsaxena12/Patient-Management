@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 @SpringBootApplication
@@ -30,7 +31,17 @@ public class HealthMonitorApplication {
 	}
 
 	public void createPatient(PatientDAO patientDAO) {
-		patientDAO.save(new PatientEntity());
+		PatientEntity patientEntity = new PatientEntity();
+		patientEntity.setUuid(UUID.randomUUID());
+		patientEntity.setFirstName("Brittany");
+		patientEntity.setLastName("Blackburn");
+		patientEntity.setEmail("brittany.blackburn@gmail.com");
+		patientEntity.setAddress("ABC");
+		patientEntity.setDateOfBirth(LocalDate.parse("1992-08-05"));
+		patientEntity.setDateOfAdmit(LocalDate.now());
+		patientEntity.setDateOfDischarge(null);
+
+		patientDAO.save(patientEntity);
 
 		System.out.println("Patient saved!");
 	}
