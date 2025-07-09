@@ -31,17 +31,9 @@ public class HealthMonitorApplication {
 	}
 
 	public void createPatient(PatientDAO patientDAO) {
-		PatientEntity patientEntity = new PatientEntity();
-		patientEntity.setUuid(UUID.randomUUID());
-		patientEntity.setFirstName("Brittany");
-		patientEntity.setLastName("Blackburn");
-		patientEntity.setEmail("brittany.blackburn@gmail.com");
-		patientEntity.setAddress("ABC");
-		patientEntity.setDateOfBirth(LocalDate.parse("1992-08-05"));
-		patientEntity.setDateOfAdmit(LocalDate.now());
-		patientEntity.setDateOfDischarge(null);
-
-		patientDAO.save(patientEntity);
+		patientDAO.save(new PatientEntity("Brittany", "Blackburn", "brittany.blackburn@gmail.com",
+				"ABC", LocalDate.parse("1992-08-05"), LocalDate.now(),
+				null));
 
 		System.out.println("Patient saved!");
 	}

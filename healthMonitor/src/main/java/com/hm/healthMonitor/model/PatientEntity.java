@@ -2,8 +2,11 @@ package com.hm.healthMonitor.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -13,32 +16,39 @@ import java.util.UUID;
 public class PatientEntity {
 
     @Id
-    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private UUID uuid;
 
     @Column(name = "first_name")
+    @NotNull
     private String firstName;
 
     @Column
+    @NotNull
     private String lastName;
 
     @Column(unique = true)
     @Email
+    @NotNull
     private String email;
 
     @Column
+    @NotNull
     private String address;
 
     @Column
+    @NotNull
     @DateTimeFormat
     private LocalDate dateOfBirth;
 
-    @DateTimeFormat
     @Column
+    @NotNull
+    @DateTimeFormat
     private LocalDate dateOfAdmit;
 
-    @DateTimeFormat
     @Column
+    @DateTimeFormat
     private LocalDate dateOfDischarge;
 
 
@@ -46,8 +56,7 @@ public class PatientEntity {
 
     }
 
-    public PatientEntity(UUID uuid,  String firstName, String lastName, String email, String address, LocalDate dateOfBirth, LocalDate dateOfAdmit, LocalDate dateOfDischarge) {
-        this.uuid = uuid;
+    public PatientEntity(String firstName, String lastName, String email, String address, LocalDate dateOfBirth, LocalDate dateOfAdmit, LocalDate dateOfDischarge) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
