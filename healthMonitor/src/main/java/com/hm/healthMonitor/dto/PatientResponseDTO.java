@@ -1,4 +1,4 @@
-package com.hm.healthMonitor.service.dto;
+package com.hm.healthMonitor.dto;
 
 import java.time.LocalDate;
 

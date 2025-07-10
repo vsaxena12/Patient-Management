@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface PatientDAOInterface extends JpaRepository<PatientEntity, UUID> {
     //Jpa Already has the following CRUD functionality
     //void save(PatientEntity patientEntity);
+    boolean existsByEmail(String email);
 }
