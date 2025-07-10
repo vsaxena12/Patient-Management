@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PatientService {
@@ -52,6 +54,34 @@ public class PatientService {
         patientEntity.setDateOfBirth(patientRequestDTO.getDateOfBirth());
         patientEntity.setDateOfAdmit(patientRequestDTO.getDateOfAdmit());
         patientEntity.setDateOfDischarge(patientRequestDTO.getDateOfDischarge());
+
+        patientDAOInterface.save(patientEntity);
+
+        return new PatientResponseDTO(
+                String.valueOf(patientEntity.getUuid()),
+                patientEntity.getFirstName(),
+                patientEntity.getLastName(),
+                patientEntity.getEmail(),
+                patientEntity.getAddress(),
+                patientEntity.getDateOfBirth()
+        );
+    }
+
+    public PatientResponseDTO updatePatient(UUID uuid, PatientRequestDTO patientRequestDTO) {
+
+        PatientEntity patientEntity = patientDAOInterface.findById(uuid)
+                .orElseThrow(() -> new RuntimeException("Patient not found with ID: "+uuid));
+
+        //Fix validations here
+        if(patientDAOInterface.existsByEmail(patientRequestDTO.getEmail())){
+            throw new EmailAlreadyExistsException("A patient with this email already exists"+
+                    patientRequestDTO.getEmail());
+        }
+
+        patientEntity.setFirstName(patientRequestDTO.getFirstName());
+        patientEntity.setLastName(patientRequestDTO.getLastName());
+        patientEntity.setEmail(patientRequestDTO.getEmail());
+        patientEntity.setDateOfBirth(patientRequestDTO.getDateOfBirth());
 
         patientDAOInterface.save(patientEntity);
 
