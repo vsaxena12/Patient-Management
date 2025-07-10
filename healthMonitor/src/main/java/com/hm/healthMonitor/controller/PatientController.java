@@ -5,6 +5,7 @@ import com.hm.healthMonitor.service.PatientService;
 import com.hm.healthMonitor.dto.PatientResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,13 @@ public class PatientController {
     public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable UUID  uuid, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
         PatientResponseDTO patientResponseDTO = patientService.updatePatient(uuid, patientRequestDTO);
         return ResponseEntity.ok().body(patientResponseDTO);
+
+    }
+
+    @DeleteMapping("/deletePatient/{uuid}")
+    public ResponseEntity<Void> deletePatient(@PathVariable UUID  uuid) {
+        patientService.deletePatient(uuid);
+        return ResponseEntity.noContent().build();
 
     }
 }

@@ -95,4 +95,8 @@ public class PatientService {
         );
     }
 
+    public void deletePatient(UUID uuid) {
+        patientDAOInterface.deleteById(uuid);
+    }
+
 }
