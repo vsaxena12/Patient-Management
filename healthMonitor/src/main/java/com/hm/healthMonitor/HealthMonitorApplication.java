@@ -30,11 +30,6 @@ public class HealthMonitorApplication {
 	}
 
 	public void createPatient(PatientDAOInterface patientDAOInterface) {
-		patientDAOInterface.save(new PatientEntity("Brittany", "Blackburn", "brittany.blackburn@gmail.com",
-				"ABC", LocalDate.parse("1992-08-05"), LocalDate.now(),
-				null));
-
-		System.out.println("Patient saved!");
 		PatientService patientService = new PatientService(patientDAOInterface);
 		System.out.print("Find All: "+patientService.findAll());
 	}
