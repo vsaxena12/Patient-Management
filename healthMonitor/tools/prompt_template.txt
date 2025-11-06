@@ -1,0 +1,16 @@
+# 1) run tests → generate jacoco.xml
+mvn -q clean verify
+
+# 2) list targets below 70%
+targets=$(./tools/find_targets.sh target/site/jacoco/jacoco.xml 0.70)
+
+# 3) generate tests
+for t in $targets; do
+  f="src/main/java/$(echo "$t" | tr '.' '/' ).java"
+  [ -f "$f" ] && USE_OLLAMA=1 MODEL_NAME="qwen2.5-coder:7b" \
+      python3 tools/generate_test.py "$f"
+done
+
+# 4) verify again + mutation tests
+mvn -q verify
+mvn -q org.pitest:pitest-maven:mutationCoverage
