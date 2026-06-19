@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.hm</groupId>
-	<artifactId>healthMonitor</artifactId>
+	<artifactId>patientService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>healthMonitor</name>
 	<description>Demo project for Spring Boot</description>
