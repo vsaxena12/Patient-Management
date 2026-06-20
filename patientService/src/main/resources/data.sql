@@ -1,5 +1,5 @@
--- Ensure the 'patient_entity' table exists
-CREATE TABLE IF NOT EXISTS patient_entity
+-- Ensure the 'patient' table exists
+CREATE TABLE IF NOT EXISTS patient
 (
     id                  UUID PRIMARY KEY,
     first_name          VARCHAR(255)        NOT NULL,
@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS patient_entity
     date_of_discharge   DATE
 );
 
--- Insert well-known UUIDs for specific patient_entitys
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+-- Insert well-known UUIDs for specific patients
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '123e4567-e89b-12d3-a456-426614174000',
        'John',
        'Doe',
@@ -22,10 +22,10 @@ SELECT '123e4567-e89b-12d3-a456-426614174000',
        '2024-01-10',
        '2024-01-11'
 WHERE NOT EXISTS (SELECT 1
-                  FROM patient_entity
+                  FROM patient
                   WHERE id = '123e4567-e89b-12d3-a456-426614174000');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '123e4567-e89b-12d3-a456-426614174001',
        'Jane',
        'Smith',
@@ -35,10 +35,10 @@ SELECT '123e4567-e89b-12d3-a456-426614174001',
        '2023-12-01',
        '2024-01-11'
 WHERE NOT EXISTS (SELECT 1
-                  FROM patient_entity
+                  FROM patient
                   WHERE id = '123e4567-e89b-12d3-a456-426614174001');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '123e4567-e89b-12d3-a456-426614174002',
        'Alice',
        'Johnson',
@@ -48,10 +48,10 @@ SELECT '123e4567-e89b-12d3-a456-426614174002',
        '2022-06-20',
        '2025-01-12'
 WHERE NOT EXISTS (SELECT 1
-                  FROM patient_entity
+                  FROM patient
                   WHERE id = '123e4567-e89b-12d3-a456-426614174002');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '123e4567-e89b-12d3-a456-426614174003',
        'Bob',
        'Brown',
@@ -61,11 +61,11 @@ SELECT '123e4567-e89b-12d3-a456-426614174003',
        '2023-05-14',
        '2023-06-10'
 WHERE NOT EXISTS (SELECT 1
-                  FROM patient_entity
+                  FROM patient
                   WHERE id = '123e4567-e89b-12d3-a456-426614174003');
 
 ---- Code is wrong here since Admit date cannot be later than discharge date
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '123e4567-e89b-12d3-a456-426614174004',
        'Emily',
        'Davis',
@@ -75,11 +75,11 @@ SELECT '123e4567-e89b-12d3-a456-426614174004',
        '2024-03-01',
        '2024-01-10'
 WHERE NOT EXISTS (SELECT 1
-                  FROM patient_entity
+                  FROM patient
                   WHERE id = '123e4567-e89b-12d3-a456-426614174004');
 
----- Insert well-known UUIDs for specific patient_entitys
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+---- Insert well-known UUIDs for specific patients
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174005',
        'Michael',
        'Green',
@@ -88,9 +88,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174005',
        '1988-07-25',
        '2024-02-15',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174005');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174005');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174006',
        'Sarah',
        'Taylor',
@@ -99,9 +99,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174006',
        '1992-04-18',
        '2023-08-25',
        null
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174006');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174006');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174007',
        'David',
        'Wilson',
@@ -110,9 +110,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174007',
        '1975-01-11',
        '2022-10-10',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174007');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174007');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174008',
        'Laura',
        'White',
@@ -121,9 +121,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174008',
        '1989-09-02',
        '2024-04-20',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174008');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174008');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174009',
        'James',
        'Harris',
@@ -132,9 +132,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174009',
        '1993-11-15',
        '2023-06-30',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174009');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174009');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174010',
        'Emma',
        'Moore',
@@ -143,9 +143,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174010',
        '1980-08-09',
        '2023-01-22',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174010');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174010');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174011',
        'Ethan',
        'Martinez',
@@ -154,9 +154,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174011',
        '1984-05-03',
        '2024-05-12',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174011');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174011');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174012',
        'Sophia',
        'Clark',
@@ -165,9 +165,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174012',
        '1991-12-25',
        '2022-11-11',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174012');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174012');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174013',
        'Daniel',
        'Lewis',
@@ -176,9 +176,9 @@ SELECT '223e4567-e89b-12d3-a456-426614174013',
        '1976-06-08',
        '2023-09-19',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174013');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174013');
 
-INSERT INTO patient_entity (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
+INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)
 SELECT '223e4567-e89b-12d3-a456-426614174014',
        'Isabella',
        'Walker',
@@ -187,5 +187,5 @@ SELECT '223e4567-e89b-12d3-a456-426614174014',
        '1987-10-17',
        '2024-03-29',
        '2024-01-10'
-WHERE NOT EXISTS (SELECT 1 FROM patient_entity WHERE id = '223e4567-e89b-12d3-a456-426614174014');
+WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174014');
 
