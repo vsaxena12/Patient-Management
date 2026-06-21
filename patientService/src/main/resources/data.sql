@@ -98,7 +98,7 @@ SELECT '223e4567-e89b-12d3-a456-426614174006',
        '123 Birch St, Shelbyville',
        '1992-04-18',
        '2023-08-25',
-       null
+       '2023-08-27'
 WHERE NOT EXISTS (SELECT 1 FROM patient WHERE id = '223e4567-e89b-12d3-a456-426614174006');
 
 INSERT INTO patient (id, first_name, last_name, email, address, date_of_birth, date_of_admit, date_of_discharge)

@@ -1,5 +1,6 @@
 package com.hm.healthMonitor.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class Patient {
     @Column(name = "date_of_admit")
     private LocalDate dateOfAdmit;
 
-    @NotNull
+    @Nullable
     @Column(name = "date_of_discharge")
     private LocalDate dateOfDischarge;
 
