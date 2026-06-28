@@ -1,0 +1,7 @@
+{
+  "type": "java",
+  "name": "PatientServiceApplication",
+  "request": "launch",
+  "mainClass": "com.hm.healthMonitor.PatientServiceApplication",
+  "envFile": "${workspaceFolder}/.env"
+}

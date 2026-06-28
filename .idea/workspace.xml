@@ -5,13 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f08d265-d37c-416a-acec-70f3f4b7d523" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/service/PatientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/service/dto/PatientResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/HealthMonitorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/HealthMonitorApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/dao/PatientDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/dao/PatientDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/healthMonitor/src/main/java/com/hm/healthMonitor/dao/PatientDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthMonitor/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/healthMonitor/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Patient-Management.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billing-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billing-service/src/main/java/com/billing/service/grpc/BillingGrpcService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/billing-service/src/main/proto/billing_service.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grpc-requests/billing-service/create-billing-account.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/grpc/BillingServiceGrpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patientService/src/main/proto/billing_service.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientService/Application_ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/patientService/Application_ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/patientService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/PatientServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/PatientServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/service/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/patientService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,22 +61,34 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.BillingServiceApplication.executor": "Run",
+    "Application.PatientService.executor": "Run",
+    "Application.PatientServiceApplication.executor": "Debug",
+    "Application.Unnamed.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.patient-service [:com.pm.patientService.PatientServiceApplication.main()].executor": "Debug",
+    "Maven.billing-service [compile].executor": "Run",
+    "Maven.patientService [clean].executor": "Run",
+    "Maven.patientService [compile].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/svarun1/Var 2025/Software Development/Patient-Management"
+    "git-widget-placeholder": "healthMonitorApp",
+    "last_opened_file_path": "/Users/svarun1/Research Topics/Patient-Management",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="PatientServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.pm.patientService.PatientServiceApplication" />
-      <module name="patient-service.main" />
+  <component name="RunManager" selected="Application.PatientServiceApplication">
+    <configuration name="BillingServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.billing.service.BillingServiceApplication" />
+      <module name="billing-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.pm.patientService.*" />
+          <option name="PATTERN" value="com.billing.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,9 +96,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PatientServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.hm.healthMonitor.PatientServiceApplication" />
+      <module name="patientService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hm.healthMonitor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BillingServiceApplication" />
+      <item itemvalue="Application.PatientServiceApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PatientServiceApplication" />
+        <item itemvalue="Application.BillingServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +164,11 @@
           <url>file://$PROJECT_DIR$/patient-service/src/main/java/com/pm/patientService/service/PatientService.java</url>
           <line>28</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/patientService/src/main/java/com/hm/healthMonitor/service/PatientService.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
