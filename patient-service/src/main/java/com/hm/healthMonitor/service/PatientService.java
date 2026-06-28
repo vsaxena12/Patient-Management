@@ -6,6 +6,7 @@ import com.hm.healthMonitor.exception.EmailAlreadyExistsException;
 import com.hm.healthMonitor.exception.PatientNotFoundException;
 import com.hm.healthMonitor.exception.UUIDNotFoundException;
 import com.hm.healthMonitor.grpc.BillingServiceGrpcClient;
+import com.hm.healthMonitor.kafka.KafkaProducer;
 import com.hm.healthMonitor.model.Patient;
 import com.hm.healthMonitor.repository.PatientDAOInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,14 @@ public class PatientService {
 
     private final PatientDAOInterface patientDAOInterface;
     private final BillingServiceGrpcClient billingServiceGrpcClient;
+    private final KafkaProducer kafkaProducer;
 
-    public PatientService(PatientDAOInterface patientDAOInterface, BillingServiceGrpcClient billingServiceGrpcClient) {
+    public PatientService(PatientDAOInterface patientDAOInterface,
+                          BillingServiceGrpcClient billingServiceGrpcClient,
+                          KafkaProducer kafkaProducer) {
         this.patientDAOInterface = patientDAOInterface;
         this.billingServiceGrpcClient = billingServiceGrpcClient;
+        this.kafkaProducer = kafkaProducer;
     }
 
     public List<PatientResponseDTO> getAllPatients() {
@@ -80,8 +85,9 @@ public class PatientService {
         patient.setDateOfAdmit(patientRequestDTO.getDateOfAdmit());
         patient.setDateOfDischarge(patientRequestDTO.getDateOfDischarge());
 
+        Patient newPatient = null;
         try {
-            patientDAOInterface.save(patient);
+            newPatient = patientDAOInterface.save(patient);
         } catch(Exception e) {
             System.out.println("Same patient already exists");
         }
@@ -92,6 +98,8 @@ public class PatientService {
         } catch(Exception e) {
             System.out.println("GRPC Billing is down!");
         }
+
+        kafkaProducer.sendEvent(newPatient);
 
         return new PatientResponseDTO(
                 String.valueOf(patient.getUUID()),

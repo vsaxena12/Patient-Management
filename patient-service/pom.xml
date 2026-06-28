@@ -42,6 +42,12 @@
 			<version>2.8.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
 		<!-- DBs -->
 		<dependency>
 			<groupId>com.h2database</groupId>
