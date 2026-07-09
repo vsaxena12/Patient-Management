@@ -1,0 +1,50 @@
+<section class="patient-list-container">
+    <div class="page-header">
+        <div>
+            <h2>Patient List</h2>
+            <p>Patients loaded from the backend server and database.</p>
+        </div>
+
+        <a routerLink="/patients/add" class="add-button">Add Patient</a>
+    </div>
+
+    <div *ngIf="isLoading" class="info-message">
+        Loading patients...
+    </div>
+
+    <!-- <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div> -->
+
+    <div *ngIf="!isLoading && !errorMessage && patients.length === 0" class="info-message">
+        No patients found.
+    </div>
+
+    <table *ngIf="!isLoading && !errorMessage && patients.length > 0" class="patient-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Date of Admit</th>
+                <th>Date of Discharge</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let patient of patients">
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.lastName }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.address }}</td>
+                <td>{{ patient.dateOfBirth }}</td>
+                <td>{{ patient.dateOfAdmit }}</td>
+                <td>{{ patient.dateOfDischarge }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
